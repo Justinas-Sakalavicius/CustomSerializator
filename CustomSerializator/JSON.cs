@@ -66,6 +66,9 @@ namespace CustomSerializator
                 case TypeCode.Single:
                     stringBuilder.Append(((float)value).ToString(System.Globalization.CultureInfo.InvariantCulture));
                     break;
+                case TypeCode.Boolean:
+                    stringBuilder.Append(((bool)value) ? "true" : "false");
+                    break;
                 default:
                     break;
             }

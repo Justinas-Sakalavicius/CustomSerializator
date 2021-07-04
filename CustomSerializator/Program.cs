@@ -7,7 +7,7 @@ namespace CustomSerializator
     {
         static void Main(string[] args)
         {
-            Person person = new() { Name = "Justas", Age = 25 };
+            Person person = new() { Name = "Justas", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f };
             string filePath = "data.save";
             Person p = null;
 

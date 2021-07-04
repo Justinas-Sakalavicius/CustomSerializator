@@ -57,6 +57,15 @@ namespace CustomSerializator
                 case TypeCode.Int32:
                     stringBuilder.Append(value);
                     break;
+                case TypeCode.Decimal:
+                    stringBuilder.Append(((decimal)value).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    break;
+                case TypeCode.Double:
+                    stringBuilder.Append(((double)value).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    break;
+                case TypeCode.Single:
+                    stringBuilder.Append(((float)value).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    break;
                 default:
                     break;
             }

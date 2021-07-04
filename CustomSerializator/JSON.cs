@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
@@ -15,6 +16,24 @@ namespace CustomSerializator
         }
 
         private static void ConstructJson(StringBuilder stringBuilder, object item)
+        {
+            if (item == null)
+            {
+                stringBuilder.Append(JConst.NullValue);
+                return;
+            }
+
+            if (item.GetType().IsGenericType | item.GetType().IsArray)
+            {
+                ConstructArray(stringBuilder, item);
+            }
+            else
+            {
+                ConstructObject(stringBuilder, item);
+            }
+        }
+
+        private static StringBuilder ConstructObject(StringBuilder stringBuilder, object item)
         {
             stringBuilder.Append(JConst.LeftBrace);
 
@@ -40,8 +59,27 @@ namespace CustomSerializator
                     AssignValue(stringBuilder, propertyInfo[i], value);
                 }
             }
-
             stringBuilder.Append(JConst.RightBrace);
+
+            return stringBuilder;
+        }
+
+        private static StringBuilder ConstructArray(StringBuilder stringBuilder, object value)
+        {
+            stringBuilder.Append(JConst.LeftBracket);
+            bool isFirst = true;
+            IList list = value as IList;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (isFirst)
+                    isFirst = false;
+                else
+                    stringBuilder.Append(JConst.Comma);
+                ConstructObject(stringBuilder, list[i]);
+            }
+            stringBuilder.Append(JConst.RightBracket);
+
+            return stringBuilder;
         }
 
         private static StringBuilder AssignValue(StringBuilder stringBuilder, PropertyInfo propertyName, object value)

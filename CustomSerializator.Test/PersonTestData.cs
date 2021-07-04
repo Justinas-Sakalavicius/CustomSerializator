@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomSerializator.Test
 {
@@ -18,7 +14,8 @@ namespace CustomSerializator.Test
                   Age = 36,
                   Score = 23.1M,
                   ExtraScore = 9.31,
-                  AdditionScore = 2.5f
+                  AdditionScore = 2.5f,
+                  Adult = true
                 }
             };
         }

@@ -7,9 +7,10 @@
 		public const char LeftBracket = '[';
 		public const char RightBracket = ']';
 		public const char Comma = ',';
-		public const string Colon = "\":";
 		public const char Quotes = '"';
 		public const char SlashQuotes = '\"';
 		public const char EmptySpace = ' ';
+		public const string Colon = "\":";
+		public const string NullValue = "null";
 	}
 }

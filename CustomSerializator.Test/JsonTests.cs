@@ -15,7 +15,7 @@ namespace CustomSerializator.Test
         {
             var resultObj = JSON.ToJSON(obj);
 
-            Assert.Equal("{\"Name\":\"Jo\",\"Age\":36,\"Score\":23.1,\"AdditionScore\":2.5,\"ExtraScore\":9.31}", resultObj);
+            Assert.Equal("{\"Name\":\"Jo\",\"Age\":36,\"Score\":23.1,\"AdditionScore\":2.5,\"ExtraScore\":9.31,\"Adult\":true}", resultObj);
         }
     }
 }

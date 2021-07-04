@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CustomSerializator
 {
@@ -7,17 +7,18 @@ namespace CustomSerializator
     {
         static void Main(string[] args)
         {
-            Person person = new() { Name = "Justas", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f };
-            string filePath = "data.save";
-            Person p = null;
+            Person person = new() { Name = "Justas", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true };
 
-            var json = new JObject();
-            json["Name"] = "Justas";
-            json["Age"] = 25;
-            var jsonStr = json.ToString();
+            var resultObj = JSON.ToJSON(person);
 
+            List<Person> list = new();
+            list.AddRange(new List<Person> {
+                new Person { Name = "Test1", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true },
+                new Person { Name = "TEe1", Age = 35, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true },
+                new Person { Name = "Justas", Age = 50, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = false }
+            });
 
-            var resultO = JSON.ToJSON(person);
+            var resultArray = JSON.ToJSON(list);
 
             Console.ReadLine();
         }

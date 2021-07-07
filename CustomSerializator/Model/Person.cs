@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CustomSerializator
+namespace CustomSerializator.Model
 {
     [Serializable]
     public class Person

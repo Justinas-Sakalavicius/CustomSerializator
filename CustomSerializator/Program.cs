@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CustomSerializator.Model;
+using CustomSerializator.Utilities;
+using System;
 
 namespace CustomSerializator
 {
@@ -9,16 +10,17 @@ namespace CustomSerializator
         {
             Person person = new() { Name = "Justas", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true };
 
-            var resultObj = JSON.ToJSON(person);
+            var address = new JsonDictionary<string, object>();
+            address["City"] = "Vilnius";
+            address["Age"] = 225;
+            address.Add("Price", 2.25);
+            address.Add("Price2", 2.75f);
+            address.Add("Price3", 2.05M);
+            address.Add("Jumping", false);
+            address.Add("Jumps", true);
 
-            List<Person> list = new();
-            list.AddRange(new List<Person> {
-                new Person { Name = "Test1", Age = 25, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true },
-                new Person { Name = "TEe1", Age = 35, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = true },
-                new Person { Name = "Justas", Age = 50, Score = 2.21M, ExtraScore = 231.23, AdditionScore = 1.2f, Adult = false }
-            });
-
-            var resultArray = JSON.ToJSON(list);
+            var resultT1 = JsonSerializer.Serialize(person);
+            var resultT2 = JsonSerializer.SerializeMap(address);
 
             Console.ReadLine();
         }
